@@ -7,7 +7,7 @@ using namespace datastructures;
 template <typename T>
 LinkedList<T>::Node::Node(T data){
   m_data = data;
-  m_next = NULL;
+  m_next = nullptr;
 }
 
 template <typename T>
@@ -54,14 +54,14 @@ void LinkedList<T>::Node::set_data(T data){
 template <typename T>
 LinkedList<T>::LinkedList(){
   m_size = 0;
-  m_head = NULL;
+  m_head = nullptr;
 }
 
 template <typename T>
 LinkedList<T>::~LinkedList(){
   typename LinkedList<T>::Node* currentNode = m_head;
 
-  while (currentNode != NULL)
+  while (currentNode != nullptr)
   {
     typename LinkedList<T>::Node* tmp = currentNode->get_next();
 
@@ -84,7 +84,7 @@ bool LinkedList<T>::is_empty(){
 
 template <typename T>
 T LinkedList<T>::first(){
-  if (m_head == NULL)
+  if (m_head == nullptr)
   {
     throw "List is empty";
   }
@@ -121,7 +121,7 @@ T LinkedList<T>::remove(int index){
   }
 
 
-  typename LinkedList<T>::Node *prevNode = NULL;
+  typename LinkedList<T>::Node *prevNode = nullptr;
   typename LinkedList<T>::Node *currentNode = m_head;
   int currentIndex = 0;
 
@@ -136,7 +136,7 @@ T LinkedList<T>::remove(int index){
   T removed_val;
 
   // Special case if deleting the first element
-  if (prevNode == NULL){
+  if (prevNode == nullptr){
     m_head = currentNode->get_next();
     removed_val = currentNode->get_data();
     delete currentNode;
@@ -181,7 +181,7 @@ void LinkedList<T>::insert(int index, T val){
       throw "Index out of bounds";
   }
 
-  typename LinkedList<T>::Node* prevNode = NULL;
+  typename LinkedList<T>::Node* prevNode = nullptr;
   typename LinkedList<T>::Node* currentNode = m_head;
   typename LinkedList<T>::Node* newNode = new LinkedList<T>::Node(val);
   int currentIndex = 0;
@@ -194,7 +194,7 @@ void LinkedList<T>::insert(int index, T val){
   }
 
   // Special case if inserting the first element
-  if (prevNode == NULL){
+  if (prevNode == nullptr){
     m_head = newNode;
     newNode->set_next(currentNode);
   }
@@ -209,14 +209,14 @@ void LinkedList<T>::insert(int index, T val){
 
 template <typename T>
 void LinkedList<T>::append(T val){
-  if(m_size == 0 && m_head == NULL)
+  if(m_size == 0 && m_head == nullptr)
   {
     m_head = new LinkedList<T>::Node(val);
     m_size++;  // increment size
     return;    // and return right away
   }
 
-  typename LinkedList<T>::Node* prevNode = NULL;
+  typename LinkedList<T>::Node* prevNode = nullptr;
   typename LinkedList<T>::Node* currentNode = m_head;
   typename LinkedList<T>::Node* newNode = new LinkedList<T>::Node(val);
   int currentIndex = 0;
