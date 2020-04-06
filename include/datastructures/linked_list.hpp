@@ -36,6 +36,10 @@ namespace datastructures{
        */
       LinkedList();
 
+      LinkedList(const LinkedList &other);
+
+      LinkedList & operator=(const LinkedList &other);
+
       /**
        * @brief Destroy the Linked List object
        * 
@@ -97,7 +101,7 @@ namespace datastructures{
       void insert(int index, T val);
 
       /**
-       * @brief Appends the given value to the beginning of the list at index 0
+       * @brief Appends the given value to the end of the list
        * 
        * @param val 
        */

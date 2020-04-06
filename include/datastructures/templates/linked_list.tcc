@@ -1,7 +1,5 @@
 #include <datastructures/linked_list.hpp>
 
-#include <iostream>
-
 using namespace datastructures;
 
 #pragma region Node Implementation
@@ -56,7 +54,7 @@ void LinkedList<T>::Node::set_data(T data){
 template <typename T>
 LinkedList<T>::LinkedList(){
   m_size = 0;
-  m_head = nullptr;
+  m_head = NULL;
 }
 
 template <typename T>
@@ -135,18 +133,23 @@ T LinkedList<T>::remove(int index){
     currentIndex++;
   }
 
+  T removed_val;
+
   // Special case if deleting the first element
   if (prevNode == NULL){
     m_head = currentNode->get_next();
+    removed_val = currentNode->get_data();
     delete currentNode;
   }
   else{
     prevNode->set_next(currentNode->get_next());
+    removed_val = currentNode->get_data();
     delete currentNode;
   }
 
   m_size--;
 
+  return removed_val;
 }
 
 
@@ -172,6 +175,7 @@ void LinkedList<T>::set(int index, T val){
 
 template <typename T>
 void LinkedList<T>::insert(int index, T val){
+
   if (index >= m_size || index < 0)
   {
       throw "Index out of bounds";
@@ -205,10 +209,26 @@ void LinkedList<T>::insert(int index, T val){
 
 template <typename T>
 void LinkedList<T>::append(T val){
-  typename LinkedList<T>::Node* newNode = new LinkedList<T>::Node(val);
+  if(m_size == 0 && m_head == NULL)
+  {
+    m_head = new LinkedList<T>::Node(val);
+    m_size++;  // increment size
+    return;    // and return right away
+  }
 
-  newNode->set_next(m_head);
-  m_head = newNode;
+  typename LinkedList<T>::Node* prevNode = NULL;
+  typename LinkedList<T>::Node* currentNode = m_head;
+  typename LinkedList<T>::Node* newNode = new LinkedList<T>::Node(val);
+  int currentIndex = 0;
+
+  while (currentIndex < m_size)
+  {
+    prevNode = currentNode;
+    currentNode = currentNode->get_next();
+    currentIndex++;
+  }
+
+  prevNode->set_next(newNode);
 
   m_size++;
 }

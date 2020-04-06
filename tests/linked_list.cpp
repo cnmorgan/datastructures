@@ -1,6 +1,8 @@
 #include <catch2/catch.hpp>
 #include <datastructures/linked_list.hpp>
 
+#include <iostream>
+
 using namespace datastructures;
 
 TEMPLATE_TEST_CASE("linked_list", "[linked_list][Template]", int){
@@ -14,14 +16,14 @@ TEMPLATE_TEST_CASE("linked_list", "[linked_list][Template]", int){
     LinkedList<int> list = LinkedList<int>();
 
     list.append(1);
-
+    
     REQUIRE(list.size() == 1);
-    REQUIRE(list.first() == 1);
+    REQUIRE(list.get(0) == 1);
     
     list.append(2);
 
     REQUIRE(list.size() == 2);
-    REQUIRE(list.first() == 2);
+    REQUIRE(list.get(1) == 2);
   }
 
 
@@ -34,17 +36,16 @@ TEMPLATE_TEST_CASE("linked_list", "[linked_list][Template]", int){
     }
 
     REQUIRE(list.size() == 5);
-    REQUIRE(list.first() == 4);
+    REQUIRE(list.get(4) == 4);
 
     list.remove(4);
 
     REQUIRE(list.size() == 4);
-    REQUIRE(list.first() == 4);
 
     list.remove(0);
 
     REQUIRE(list.size() == 3);
-    REQUIRE(list.first() == 3);
+    REQUIRE(list.get(0) == 1);
 
   }
 
@@ -58,12 +59,12 @@ TEMPLATE_TEST_CASE("linked_list", "[linked_list][Template]", int){
     }
     
     REQUIRE(list.size() == 5);
-    REQUIRE(list.first() == 4);
+    REQUIRE(list.get(4) == 4);
 
     list.set(0, 9);
 
     REQUIRE(list.size() == 5);
-    REQUIRE(list.first() == 9);
+    REQUIRE(list.get(0) == 9);
 
     list.set(4, 22);
 
@@ -79,11 +80,11 @@ TEMPLATE_TEST_CASE("linked_list", "[linked_list][Template]", int){
       list.append(i);
     }
 
-    REQUIRE(list.get(0) == 4);
-    REQUIRE(list.get(1) == 3);
+    REQUIRE(list.get(0) == 0);
+    REQUIRE(list.get(1) == 1);
     REQUIRE(list.get(2) == 2);
-    REQUIRE(list.get(3) == 1);
-    REQUIRE(list.get(4) == 0);
+    REQUIRE(list.get(3) == 3);
+    REQUIRE(list.get(4) == 4);
   }
 
   SECTION("Can insert values at arbitrary indices"){
@@ -95,13 +96,13 @@ TEMPLATE_TEST_CASE("linked_list", "[linked_list][Template]", int){
     }
 
     REQUIRE(list.size() == 5);
-    REQUIRE(list.first() == 4);
+    REQUIRE(list.get(4) == 4);
 
     list.insert(3, 99);
 
     REQUIRE(list.size() == 6);
     REQUIRE(list.get(3) == 99);;
-    REQUIRE(list.get(4) == 1);
+    REQUIRE(list.get(4) == 3);
 
   }
 
