@@ -126,4 +126,41 @@ TEMPLATE_TEST_CASE("linked_list", "[linked_list][Template]", int){
 
     REQUIRE_FALSE(list.is_empty());
   }
+
+  SECTION("can use the copy constructor correctly"){
+    LinkedList<int> list = LinkedList<int>();
+
+    list.append(0);
+    list.append(1);
+
+    LinkedList<int> list2 = list;
+
+    REQUIRE(list2.size() == 2);
+    REQUIRE(list2.get(0) == 0);
+
+    list.set(0, 5);
+    list.append(12);
+
+    REQUIRE(list2.size() == 2);
+    REQUIRE(list2.get(0) == 0);
+  }
+
+  SECTION("can use the assignment operator correctly"){
+    LinkedList<int> list = LinkedList<int>();
+
+    list.append(0);
+    list.append(1);
+
+    LinkedList<int> list2 = LinkedList<int>();
+    list2 = list;
+
+    REQUIRE(list2.size() == 2);
+    REQUIRE(list2.get(0) == 0);
+
+    list.set(0, 5);
+    list.append(12);
+    
+    REQUIRE(list2.size() == 2);
+    REQUIRE(list2.get(0) == 0);
+  }
 }

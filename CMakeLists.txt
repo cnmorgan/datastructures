@@ -17,6 +17,7 @@ set(TEST_SOURCES
     tests/main.cpp
     tests/list.cpp
     tests/linked_list.cpp
+    tests/stack.cpp
 )
 
 #project(${TARGET_NAME} VERSION 1.0.0 LANGUAGES CXX)

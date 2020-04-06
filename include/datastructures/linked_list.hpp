@@ -74,7 +74,7 @@ namespace datastructures{
        * @param index 
        * @return T 
        */
-      T get(int index);
+      T get(int index) const;
 
       /**
        * @brief remove the value from the given index from the list

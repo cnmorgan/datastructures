@@ -58,6 +58,56 @@ LinkedList<T>::LinkedList(){
 }
 
 template <typename T>
+LinkedList<T>::LinkedList(const LinkedList<T> &other) : m_size(other.m_size){
+  
+  if(other.m_head != nullptr){
+    m_head = new LinkedList<T>::Node(other.m_head->get_data());
+  }
+  else{
+    m_head = nullptr;
+  }
+}
+
+template<typename T>
+LinkedList<T> & LinkedList<T>::operator=(const LinkedList<T> &other){
+  if(&other != this){
+    m_size = other.m_size;
+
+    //If this list has any values free up all that memory
+    if(m_head != nullptr){
+      typename LinkedList<T>::Node* currentNode = m_head;
+
+      while (currentNode != nullptr)
+      {
+        typename LinkedList<T>::Node* tmp = currentNode->get_next();
+
+        delete currentNode;
+
+        currentNode = tmp;
+      }
+    }
+
+    m_head = nullptr;
+
+    //copy over all the values from the other list
+    if(other.m_head != nullptr){
+      m_head = new LinkedList<T>::Node(other.m_head->get_data());
+      LinkedList<T>::Node* currentNode = m_head;
+
+      for (int i = 1; i < other.m_size; i++)
+      {
+        LinkedList<T>::Node *newNode = new LinkedList<T>::Node(other.get(i));
+        currentNode->set_next(newNode);
+        currentNode = currentNode->get_next();
+      }
+      
+    }
+  }
+
+  return *this;
+}
+
+template <typename T>
 LinkedList<T>::~LinkedList(){
   typename LinkedList<T>::Node* currentNode = m_head;
 
@@ -94,7 +144,7 @@ T LinkedList<T>::first(){
 }
 
 template <typename T>
-T LinkedList<T>::get(int index){
+T LinkedList<T>::get(int index) const {
   if (index >= m_size || index < 0)
   {
       throw "Index out of bounds";
