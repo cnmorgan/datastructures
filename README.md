@@ -1,80 +1,20 @@
 # datastructures
 
-## CPPGEN
+## Purpose
 
-This project has been bootstrapped using cppgen!
+I made this project to help me learn c++ by implementing a few very basic data structures in c++ and writing tests for them in Catch2
 
-## File structure
+## Usage
 
-```
-datastructures
-|
-+--app
-+--bin
-+--docs
-+--examples
-+--include
-|  +--datastructures
-|  |  +--example.hpp
-+--libs
-|  +--docs
-|  +--include
-|  |  +--example
-|  |  |  +--example.hpp
-|  +--libs
-|  +--src
-|  |  +--example.cpp
-|  +--CMakeLists.txt
-+--src
-|  +--example.cpp
-+--tests
-+--.gitignore
-+--CMakeLists.txt
-```
+If you would like to use or just play around with this repo simply clone it into a known location, then ensure the headers in the `/include` directory are in the include path of you project. This is a header only library so after that is done the structures can be accessed using `#include <datastructures>` all datastructures are in a namespace `dts`.
 
-### /app
+## Testing
 
-Use this directory to house the source code for an executable (if you need one)
-
-### /bin
-
-Use this directory for any shell scripts you need to use along with your library/app
-
-### /docs
-
-This is where you can put any additonal documentation for you project
-
-### /examples
-
-Put example code demonstrating the use of your project here.
-
-### /include/datastructures
-
-Put any public header files in this directory.
-
-### /libs
-
-Use this directory for any third party libraries you want to use in your project
-
-### /src
-
-Use this directory for the actual source code of your project along with any private header files
-
-## TODO
-
-in the  directory execute the following commands:
+To run the tests, first clone the repository. Then in the root directory execute the following commands:
 
 ```
 mkdir build
 cd build
 cmake ..
-make
-./main
+ctest
 ```
-
-You should see the output of the sample code. This means that everthing was set up correctly.
-
-You should look through the example files given to get an idea of the organization of the project. You should also make sure to look at the CMakeLists.txt to see what you will need
-to change as your project grows and new files and/or modules are added.
-
-After you have made sure you understand the structure of this project, remove all of the sample code and you can begin adding to your project.
