@@ -12,7 +12,7 @@ namespace datastructures
   class List
   {
   private:
-    int* m_data;
+    T* m_data;
     int m_capacity;
     int m_size;
 
