@@ -1,6 +1,7 @@
 #include <catch2/catch.hpp>
 #include<datastructures/list.hpp>
-using namespace datastructures;
+
+using namespace dts;
 
 TEMPLATE_TEST_CASE("Lists", "[list][template]", int){
 
@@ -78,7 +79,27 @@ TEMPLATE_TEST_CASE("Lists", "[list][template]", int){
     }
   }
 
+  SECTION("can remove arbitrary values"){
+    List<int> list = List<int>();
 
+    for (int i = 0; i < 10; i++)
+    {
+      list.append(i);
+    }
+
+    list.remove(0);
+
+    REQUIRE(list.get(0) == 1);
+
+    list.remove(4);
+
+    REQUIRE(list.get(4) == 6);
+
+    list.remove(6);
+
+    REQUIRE(list.get(5) == 7);
+
+  }
 
   SECTION("can tell when they are empty"){
     List<int> list = List<int>();

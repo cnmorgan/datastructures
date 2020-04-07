@@ -1,19 +1,17 @@
 #pragma once
 
-namespace datastructures{
+#include <datastructures/list.hpp>
+
+namespace dts{
   template <typename T>
   class Stack{
     private:
-      T* m_data;
-      int m_size;
-      int m_capacity;
-
-      void increase_capacity();
+      List<T> m_data;
     public:
+
       Stack();
       Stack(int capacity);
-      Stack(const Stack &other);
-      Stack & operator=(const Stack &other);
+
       void push(T val);
       T pop();
       int size();

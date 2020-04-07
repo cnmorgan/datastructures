@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-using namespace datastructures;
+using namespace dts;
 
 TEMPLATE_TEST_CASE("linked_list", "[linked_list][Template]", int){
   SECTION("can be constructed without issue"){

@@ -1,6 +1,6 @@
 #pragma once
 
-namespace datastructures
+namespace dts
 {
 
   /**
@@ -60,6 +60,14 @@ namespace datastructures
      * @return T 
      */
     T get(int index);
+
+    /**
+     * @brief Removes and returns a value at the given index
+     * 
+     * @param index 
+     * @return T 
+     */
+    T remove(int index);
 
     /**
      * @brief Gets the current length of the list

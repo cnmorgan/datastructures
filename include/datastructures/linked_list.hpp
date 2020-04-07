@@ -1,6 +1,6 @@
 #pragma once
 
-namespace datastructures{
+namespace dts{
   template <typename T>
   class LinkedList{
     private:

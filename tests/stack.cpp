@@ -1,7 +1,7 @@
 #include <catch2/catch.hpp>
 #include <datastructures/stack.hpp>
 
-using namespace datastructures;
+using namespace dts;
 
 TEMPLATE_TEST_CASE("stack", "[stack][Template]", int){
   SECTION("can be created with an empty constructor"){
@@ -23,13 +23,13 @@ TEMPLATE_TEST_CASE("stack", "[stack][Template]", int){
     stack.push(2);
     stack.push(5);
 
-    REQUIRE(stack.pop == 5);
+    REQUIRE(stack.pop() == 5);
 
     stack.push(1);
 
-    REQUIRE(stack.pop == 1);
-    REQUIRE(stack.pop == 2);
-    REQUIRE(stack.pop == 3);
+    REQUIRE(stack.pop() == 1);
+    REQUIRE(stack.pop() == 2);
+    REQUIRE(stack.pop() == 3);
   }
 
   SECTION("keeps track of size"){
@@ -69,8 +69,8 @@ TEMPLATE_TEST_CASE("stack", "[stack][Template]", int){
 
     Stack<int> stack2 = stack;
 
-    stack.pop()
-    stack.pop()
+    stack.pop();
+    stack.pop();
     stack.push(11);
 
     REQUIRE(stack2.pop() == 3);
@@ -93,8 +93,8 @@ TEMPLATE_TEST_CASE("stack", "[stack][Template]", int){
 
     stack2 = stack;
 
-    stack.pop()
-    stack.pop()
+    stack.pop();
+    stack.pop();
     stack.push(11);
 
     REQUIRE(stack2.pop() == 3);

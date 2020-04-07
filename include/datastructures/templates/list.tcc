@@ -1,6 +1,6 @@
 #include <datastructures/list.hpp>
 
-using namespace datastructures;
+using namespace dts;
 
 template <typename T>
 List<T>::List(int capacity){
@@ -104,6 +104,25 @@ T List<T>::get(int index){
   }
 
   return m_data[index];
+}
+
+template <typename T>
+T List<T>::remove(int index){
+  if(index < 0 || index > m_capacity - 1 || index > m_size - 1){
+    throw "Index out of bounds";
+  }
+
+  m_size--;
+
+  T val = m_data[index];
+
+  //Shift all the values
+  for (int i = index; i < m_size; i++)
+  {
+    m_data[i] = m_data[i + 1];
+  }
+
+  return val;
 }
 
 template <typename T>

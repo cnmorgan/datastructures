@@ -1,6 +1,6 @@
 #include <datastructures/linked_list.hpp>
 
-using namespace datastructures;
+using namespace dts;
 
 #pragma region Node Implementation
 
